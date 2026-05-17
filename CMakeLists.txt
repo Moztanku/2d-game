@@ -19,18 +19,14 @@ endif()
 # Dependencies
 include(FetchContent)
 
-FetchContent_Declare(
-    SFML
-    URL https://github.com/SFML/SFML/releases/download/3.1.0/SFML-3.1.0-linux-gcc-64-bit.tar.gz
-    URL_HASH SHA256=d2ac8bb63aee77b833d84fcdbc489dbdf17f57f2c8fe2216e6b02996875377e3
-)
-FetchContent_Declare(
-    EnTT
-    URL https://github.com/skypjack/entt/archive/refs/tags/v3.16.0.zip
-    URL_HASH SHA256=b34b11f00ea9abbdda63c4cfdcee319047882376abf3c3ef95436ed138293bd1
-)
+FetchContent_Declare(mSFML
+    URL https://github.com/Moztanku/minimal-dependencies/releases/download/v1.0/sfml-3.1.0-linux.tar.gz
+    URL_HASH SHA256=62ba089cf031a6eb1c4919ad47f331db6365a13402a2a2fdeff910eb1fc5158e)
+FetchContent_MakeAvailable(mSFML)
 
-FetchContent_MakeAvailable(SFML)
+FetchContent_Declare(EnTT
+    URL https://github.com/skypjack/entt/archive/refs/tags/v3.16.0.zip
+    URL_HASH SHA256=b34b11f00ea9abbdda63c4cfdcee319047882376abf3c3ef95436ed138293bd1)
 FetchContent_MakeAvailable(EnTT)
 
 # Executable
@@ -48,8 +44,8 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-    sfml-graphics
-    sfml-window
-    sfml-system
+    mSFML::Graphics
+    mSFML::Window
+    mSFML::System
     EnTT::EnTT
 )
